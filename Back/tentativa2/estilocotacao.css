@@ -1,0 +1,68 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('./cotacao.png');
+    background-size: 120%;
+    margin: 0;
+}
+
+h1 {
+    color: #333; /* Cor do texto para melhor legibilidade */
+}
+
+.container {
+    display: block;
+    margin: 20px 0;
+    color: #555; /* Cor do rótulo para melhor legibilidade */
+}
+
+#amount {
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50; /* Cor de fundo verde */
+    color: white; /* Cor do texto branco */
+    border: none;
+    border-radius: 15px;
+}
+
+button:hover {
+    background-color: #45a049; /* Mudança de cor no hover */
+}
+
+#result {
+    background-color: #037408;
+    color: aliceblue;
+    font-weight: bold;
+    margin: 30px 540px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#voltar a {
+    min-width: 150px;
+    margin: 0.8rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 10rem;
+    border: none;
+    background-color: #037408;
+    color: #f7f7f7;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  #suggestions a:hover {
+    opacity: 1;
+  }
+
+  #voltar a:hover {
+    opacity: 1;
+  }
+  

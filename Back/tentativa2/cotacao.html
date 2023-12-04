@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação em Real</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #result {
+            font-weight: bold;
+        }
+    </style>
+    <link rel="stylesheet" href="./estilocotacao.css" />
+</head>
+
+<body style=" background-image: url('./cotacao.png'); background-size: 100%;">
+
+    <h1 style="color: rgb(240, 255, 243); text-shadow: 1px 2px 2px black;">Cotação para Turismo</h1>
+    <h2 style="color: aliceblue; font-style: italic; text-shadow: 3px 2px 2px black;">Moeda Real <br></h2>
+
+    <input type="number" id="amount" placeholder="Inserir valor 0,00">
+
+    <button onclick="convertCurrency('USD')" style="text-shadow: 2px 2px 2px black;">Converter para Dólar (USD)</button>
+    <button onclick="convertCurrency('ARS')" style="text-shadow: 2px 2px 2px black;">Converter para Peso (ARS)</button>
+    <button onclick="convertCurrency('EUR')" style="text-shadow: 2px 2px 2px black;">Converter para Euro (EUR)</button>
+    <button onclick="convertCurrency('JPY')" style="text-shadow: 2px 2px 2px black;">Converter para Iene (JPY)</button>
+
+    <div>
+        <h2 style="color: aliceblue; text-shadow: 4px 4px 4px black;">Resultado da Cotação: </h2>
+        <div id="result"></div>
+    </div>
+
+    <div id="voltar">
+        <a href="./painel.html">Voltar</a>
+    </div>
+
+    <script>
+        function convertCurrency(targetCurrency) {
+            const baseCurrency = 'BRL';  
+            const amount = parseFloat(document.getElementById('amount').value);
+
+            const apiKey = 'YOUR_ACCESS_KEY';
+            const apiUrl = `https://open.er-api.com/v6/latest/${baseCurrency}?apikey=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const rate = data.rates[targetCurrency];
+                    const convertedAmount = (amount * rate).toFixed(2);
+                    const resultElement = document.getElementById('result');
+                    resultElement.innerHTML = `${amount} ${baseCurrency} = ${convertedAmount} ${targetCurrency}`;
+                })
+                .catch(error => {
+                    console.error('Erro ao obter taxa de câmbio:', error);
+                    const resultElement = document.getElementById('result');
+                    resultElement.innerHTML = 'Erro ao obter taxa de câmbio. Por favor, tente novamente.';
+                });
+        }
+    </script>
+
+</body>
+
+</html>
